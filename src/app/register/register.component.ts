@@ -4,15 +4,15 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { FEED_ADD, FEED_REMOVE, FEED_ADD_COMMENT } from '../store/feed/feed.actions';
-import { USER_TRY_LOGIN } from '../store/profile/profile.actions';
+import { USER_TRY_LOGIN, USER_TRY_REGISTER } from '../store/profile/profile.actions';
 import { IAppState } from '../store';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   form: FormGroup;
 
   profile$: Observable<{}>;
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
 
       this.store.dispatch({
-        type: USER_TRY_LOGIN,
+        type: USER_TRY_REGISTER,
         payload: this.form.value
       });
 

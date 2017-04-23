@@ -1,58 +1,63 @@
 import BaseController from "../../lib/BaseController";
-import { userModel } from "./user-model";
+import { userModel } from './user-model';
+import * as bcrypt from 'bcrypt';
+import { sign } from "jsonwebtoken";
+import { secret } from '../../config';
 
 class UserController extends BaseController {
-//   login(req,res,next) {
-//     const { username, password } = req.body;
-//     return this.model.findOne({username: username})
-//       .then(doc => {
-//         if (!doc) { 
-//           return res.status(200).json({ error: 'Invalid Credentials: The username and password does not match.'}); 
-//         } 
-//         else {
-//           bcrypt.compare(password, doc.password, function(err, isMatch) {
-//             if (err) throw err;
-//             // if incoming password matches the hashed password
-//             if (isMatch === true) {
-//               console.log('right password');
-//               const token = jwt.sign({
-//                 id: doc._id,
-//                 username: doc.username,
-//                 email: doc.email
-//               }, config.jwtSecret, {
-//                   expiresIn: 60 * 60 * 24 // expires in 24 hours
-//               });
-//               return res.status(200).json({token});
-//             }
-//             else {
-//               console.log('wrong password');
-//               res.status(200).json({
-//                   error: 'Sorry, the password does not match the username.'
-//               })
-//             }
 
-//           })
-//         }
-//       })
-//       .catch(err => next(err));
-//   }
+  async register(req, res, next) {
+    const { username, password, email } = req.body
+    try {
 
-//   register(req,res,next) {
-//     const { username, password, email } = req.body;
-//     return this.model.findOne({username: username})
-//       .then(doc => {
-//           if (doc) { 
-//             console.log('if DOC ', doc)
-//             return res.status(200).json({ error: 'Sorry the username already exists. Please select a different username.'}); 
-//           } 
-//           else {
-//             console.log('doesnt exist')
-//             this.model.create(req.body)
-//             .then(doc => res.status(201).json(doc))
-//             .catch(err => next(err));
-//           }
-//       })
-//   }
+      let userFound = await this.model.findOne({ username: username })
+      
+      if (userFound) {
+        return res.status(200).json({ error: 'Sorry the username already exists. Please select a different username.' });
+      }
+      else {
+        console.log('username is available -> try to create')
+        try {
+          const hash = await bcrypt.hash(req.body.password, 10)
+          req.body.password = hash
+          let newDoc = await this.model.create(req.body)
+          return res.status(201).json(newDoc)
+        } 
+        catch (err) {
+          return next(err)
+        }
+      }
+    } catch(err) {
+      return next(err)
+    }
+  }
+
+  async attemptLogin(req, res, next) {
+    const { username, password } = req.body;
+    let userFound = await this.model.findOne({ username: username })
+    if (!userFound) {
+      console.log('NO ACCOUNT FOUND')
+      return res.status(200).json({ error: 'Invalid Credentials: An account with that username does not exist.' });
+    } else {
+      console.log('ACCOUNT FOUND')
+      try {
+        // check password match
+        const matchResult = await bcrypt.compare(password, userFound.password)
+        if (matchResult === true) {
+          console.log('password matched')
+          const token = sign({ id: userFound._id, user: userFound.username, permissions: [] }, secret, { expiresIn: "7d" });
+          return res.json({ jwt: token })
+        } else {
+          console.log('password NOT matched')
+          return res.json({ 'error': 'Sorry, the password does not match the username.' })
+        }
+      }
+      catch (err) {
+        next(err)
+      }
+    }
+  }
+
 }
 
 export default new UserController(userModel);

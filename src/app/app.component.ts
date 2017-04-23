@@ -23,8 +23,8 @@ export class AppComponent {
     //   .get('/api/public/simple')
     //   .map((response: Response) => response.json());
 
-    store.dispatch({
-      type: USER_GET
-    });
+    // store.dispatch({
+    //   type: USER_GET
+    // });
   }
 }

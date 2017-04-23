@@ -7,6 +7,7 @@ const routes: Route[] = [
   { loadChildren: 'app/profile/profile.module#ProfileModule', path: 'profile' },
   { loadChildren: 'app/weather/weather.module#WeatherModule', path: 'weather' },
   { loadChildren: 'app/login/login.module#LoginModule', path: 'login' },
+  { loadChildren: 'app/register/register.module#RegisterModule', path: 'register' },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(
