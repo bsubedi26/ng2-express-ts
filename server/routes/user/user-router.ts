@@ -14,17 +14,11 @@ userRouter.route('/:id')
 
 userRouter.post('/login', (req, res, next) => {
   console.log("LOGIN POST ROUTER ", req.body);
-  if (!req.body.hasOwnProperty("password")) {
-    return next(new Error("No password"))
-  }
   userController.attemptLogin(req,res,next);
 })
 
 userRouter.post('/register', async (req,res,next) => {
   console.log("REGISTER POST ROUTER ", req.body);
-  // if (!req.body.hasOwnProperty("password")) {
-  //   return next(new Error("No password"))
-  // }
   userController.register(req,res,next)
 })
 
