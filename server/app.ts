@@ -37,7 +37,7 @@ app.use((req: express.Request, res: express.Response, next) => {
 // no stacktrace leaked to user
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   res.status(err.status || 500);
-  console.log('ERROR!!', err)
+  console.log('EXPRESS FINAL MIDDLEWARE ERROR => ', err)
   res.json({
     error: {},
     message: err.message,

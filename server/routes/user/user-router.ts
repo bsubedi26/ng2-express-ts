@@ -23,5 +23,3 @@ userRouter.post('/register', async (req,res,next) => {
 })
 
 export { userRouter };
-
-
