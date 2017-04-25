@@ -15,14 +15,14 @@ import { IWeather, weatherReducer } from './weather/weather.reducer';
 import { WeatherEffects } from './weather/weather.effects';
 import { CommonModule } from '@angular/common';
 
-// all new reducers should be define here
+// all reducers should be defined here
 export interface IAppState {
   feed: IFeed[];
   profile: IProfile;
   weather: IWeather;
 }
 
-// all new reducers should be define here
+// all reducers should be defined here
 const reducers = {
   feed: feedReducer,
   profile: profileReducer,
@@ -54,6 +54,7 @@ export const store: ModuleWithProviders = StoreModule.provideStore(reducer);
 export const instrumentation: ModuleWithProviders =
   (!environment.production) ? StoreDevtoolsModule.instrumentOnlyWithExtension() : DummyModule.forRoot();
 
+// all effects should be defined here
 export const effects: ModuleWithProviders[] = [
   EffectsModule.run(ProfileEffects),
   EffectsModule.run(FeedEffects),

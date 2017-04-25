@@ -45,8 +45,9 @@ class UserController extends BaseController {
         const matchResult = await bcrypt.compare(password, userFound.password)
         if (matchResult === true) {
           console.log('password matched')
-          const token = sign({ id: userFound._id, user: userFound.username, permissions: [] }, secret, { expiresIn: "7d" });
-          return res.json({ jwt: token })
+          const user = { id: userFound._id, username: userFound.username, permissions: [] }
+          const token = sign({ id: userFound._id, user: userFound.username, permissions: [] }, secret, { expiresIn: "7d" })
+          return res.json({ jwt: token, user: user })
         } else {
           console.log('password NOT matched')
           return res.json({ 'error': 'Sorry, the password does not match the username.' })

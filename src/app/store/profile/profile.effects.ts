@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
@@ -36,9 +37,15 @@ export class ProfileEffects {
       return this.http.post('/api/user/register', action.payload)
         .map((response: Response) => response.json())
         .catch(() => Observable.of(({ type: USER_GET_FAIL })))
-        // .map((response) => ({type: USER_TRY_REGISTER_SUCCESS, payload: response}));
-        .map((response) => ({type: USER_TRY_LOGIN_SUCCESS, payload: response}));
+        .map((response) => ({type: USER_TRY_REGISTER_SUCCESS, payload: response}));
     })
 
-  constructor(private actions$: Actions, private http: Http) {}
+  @Effect({ dispatch: false }) 
+  navigateAfterLogin$ = this.actions$
+    .ofType(USER_TRY_LOGIN_SUCCESS)
+    .switchMap(() => {
+      return this.router.navigate(['/dashboard'])
+    })
+
+  constructor(private actions$: Actions, private http: Http, public router: Router) {}
 }

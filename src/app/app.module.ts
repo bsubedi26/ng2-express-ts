@@ -8,10 +8,12 @@ import { routing } from './app.router';
 import { effects, store, instrumentation } from './store';
 import { SharedModule } from './shared/shared.module';
 import { WeatherService } from './weather/weather.service';
+import { TopNavigationComponent } from './top-navigation/top-navigation.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TopNavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -21,10 +23,11 @@ import { WeatherService } from './weather/weather.service';
     store,
     effects,
     routing,
-    instrumentation
+    instrumentation,
   ],
   providers: [
-    WeatherService
+    WeatherService,
+    // SocketService
   ],
   bootstrap: [
     AppComponent

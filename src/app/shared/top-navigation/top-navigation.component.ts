@@ -10,9 +10,13 @@ export class TopNavigationComponent implements OnInit {
 
   @ViewChild('topnav') topnav: ElementRef;
 
-  constructor() { }
+  constructor() {
 
-  ngOnInit() {}
+  }
+
+  ngOnInit() {
+   
+  }
 
   toggle() {
     this.topnav.nativeElement.classList.toggle(['responsive']);

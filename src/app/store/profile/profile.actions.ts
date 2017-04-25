@@ -4,4 +4,4 @@ export const USER_GET_FAIL = 'Profile: get user fail';
 export const USER_TRY_LOGIN = 'Profile: user try login';
 export const USER_TRY_LOGIN_SUCCESS = 'Profile: user try login success';
 export const USER_TRY_REGISTER = 'Profile: user try register';
-export const USER_TRY_REGISTER_SUCCESS = 'Profile: user try register';
+export const USER_TRY_REGISTER_SUCCESS = 'Profile: user try register success';

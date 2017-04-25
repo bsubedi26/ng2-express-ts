@@ -1,0 +1,38 @@
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import * as socketIo from 'socket.io-client';
+
+let SERVER_URL = 'http://localhost:8080';
+
+@Injectable()
+export class SocketService {
+    private socket;
+
+    constructor() {
+        // this.initSocket();
+    }
+
+    private initSocket(): void {
+        this.socket = socketIo(SERVER_URL);
+    }
+
+    public socketTest() {
+        console.log('socket works function test')
+    }
+    public send(message): void {
+        this.socket.emit('message', message);
+    }
+
+    public get() {
+        let observable = new Observable(observer => {
+            this.socket.on('message', (data) => {
+                observer.next(data);
+            });
+            return () => {
+                this.socket.disconnect();
+            };
+        });
+        return observable;
+    }
+
+}

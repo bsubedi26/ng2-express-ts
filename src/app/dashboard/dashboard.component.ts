@@ -1,3 +1,4 @@
+import { SocketService } from './../services/SocketService';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -15,9 +16,12 @@ export class DashboardComponent {
   form: FormGroup;
 
   feeds$: Observable<{}>;
+  profile$: Observable<{}>;
+  test$
+  constructor(public fb: FormBuilder, public store: Store<IAppState>, private sockSvc: SocketService) {
 
-  constructor(public fb: FormBuilder, public store: Store<IAppState>) {
-
+    
+    this.profile$ = store.select('profile');
     this.feeds$ = store.select('feed');
 
     this.form = fb.group({
@@ -25,6 +29,11 @@ export class DashboardComponent {
       name: ['', Validators.required]
     });
 
+    
+    this.test$ = store.select(state => {
+      console.log('ST', state)
+      return state
+    })
   }
 
   submitFeed(): void {

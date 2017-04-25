@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { SERVICES } from './../services/';
 
 import { ModalComponent, ModalDirectivesDirective } from './modal/modal.component';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,6 @@ import { InputComponent } from './input/input.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
 import { LoaderComponent } from './loader/loader.component';
-
 @NgModule({
   declarations: [
     ModalComponent,
@@ -40,6 +40,9 @@ import { LoaderComponent } from './loader/loader.component';
     InputComponent,
     SubNavigationComponent,
     NotesComponent
+  ],
+  providers: [
+    SERVICES
   ]
 })
 export class SharedModule {}

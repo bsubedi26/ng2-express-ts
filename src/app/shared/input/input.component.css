@@ -8,6 +8,6 @@
 }
 
 .field.error > * {
-  background: lightcoral;
-  color: white;
+  color: red;
+  font-size: 18px;
 }

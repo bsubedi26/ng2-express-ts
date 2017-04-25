@@ -1,0 +1,10 @@
+<ul class="topnav" #topnav>
+  <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+  <li><a routerLink="/weather" routerLinkActive="active">Weather</a></li>
+  <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+  <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+  <li *ngIf="username"><a routerLink="/" routerLinkActive="active"><span>Hello, {{username}}</span></a></li>
+  <li class="icon">
+    <a (click)="toggle()">&#9776;</a>
+  </li>
+</ul>

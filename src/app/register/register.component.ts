@@ -1,3 +1,5 @@
+import { HttpService } from './../services/HttpService';
+import { SocketService } from './../services/SocketService';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -17,8 +19,9 @@ export class RegisterComponent implements OnInit {
 
   profile$: Observable<{}>;
 
-  constructor(public fb: FormBuilder, public store: Store<IAppState>) {
+  constructor(private sockSvc: SocketService,public fb: FormBuilder, public store: Store<IAppState>, public registerService: HttpService) {
 
+    console.log(sockSvc)
     this.profile$ = store.select('profile');
 
     this.form = fb.group({
@@ -36,10 +39,7 @@ export class RegisterComponent implements OnInit {
 
     if (this.form.valid) {
 
-      this.store.dispatch({
-        type: USER_TRY_REGISTER,
-        payload: this.form.value
-      });
+      this.registerService.dispatchProfileRegister(this.form.value)
 
       this.form.reset();
     }
