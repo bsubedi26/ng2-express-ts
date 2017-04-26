@@ -31,7 +31,7 @@ export class DashboardComponent {
 
     
     this.test$ = store.select(state => {
-      console.log('ST', state)
+      console.log('test subscribe ', state)
       return state
     })
   }

@@ -1,15 +1,27 @@
+import { IAppState } from './../store/index';
+import { Store } from '@ngrx/store';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import * as socketIo from 'socket.io-client';
 
-let SERVER_URL = 'http://localhost:8080';
+let SERVER_URL = 'http://localhost:8000';
 
 @Injectable()
 export class SocketService {
     private socket;
 
-    constructor() {
-        // this.initSocket();
+
+    constructor(private store: Store<IAppState>) {
+        this.initSocket();
+
+        this.store.select("profile")
+            .subscribe((response: any) => {
+                console.log('RESPONSE SOCKEKTKE', response) 
+                const { payload } = response
+                // let socket = socketIo(SERVER_URL, { query: "jwttoken=" + payload.jwt });
+                // socket.on("UPDATE_AUTH", action => console.log(action));
+                // socket.on("UPDATE_REDUX", action => console.log(action));
+        });
     }
 
     private initSocket(): void {
@@ -21,6 +33,16 @@ export class SocketService {
     }
     public send(message): void {
         this.socket.emit('message', message);
+    }
+
+    public connectSocketToStore(): void {
+        // this.store.select(state => state.profile.payload)
+        //     .subscribe((payload: Object) => {
+                
+        //         console.log("PAY", payload)
+        //         let socket = socketIo(SERVER_URL, {query: "jwttoken=" + token});
+        //         socket.on("UPDATE_REDUX", action => this.store.dispatch(action));
+        // });
     }
 
     public get() {

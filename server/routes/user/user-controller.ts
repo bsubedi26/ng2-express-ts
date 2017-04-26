@@ -32,6 +32,7 @@ class UserController extends BaseController {
     }
   }
 
+
   async attemptLogin(req, res, next) {
     const { username, password } = req.body;
     let userFound = await this.model.findOne({ username: username })

@@ -26,5 +26,6 @@ export class AppComponent {
     // store.dispatch({
     //   type: USER_GET
     // });
+    
   }
 }
