@@ -36,7 +36,7 @@ io.on('connect', (socket: any) => {
     io.emit("addUserToSocketList",socket.handshake.query);
     // console.log(clientListNames);
     socket.on('message', (m) => {
-        console.log('(message): %s', JSON.stringify(m));
+        // console.log('(message): %s', JSON.stringify(m));
         io.emit('message', m);
     });
 

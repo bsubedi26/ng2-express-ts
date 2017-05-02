@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "concurrently --kill-others \"ng serve --aot=true --progress=false --proxy-config proxy.conf.json\" \"npm run _server:run\"",
+    "serve": "ng serve --aot=true --progress=false --proxy-config proxy.conf.json",
     "lint:client": "ng lint",
     "lint:server": "tslint './server/**/*.ts' -c ./server/tslint.json --fix",
     "test:client": "ng test",

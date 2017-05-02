@@ -9,11 +9,16 @@ import * as logger from 'morgan';
 import { feedRouter } from "./routes/feed";
 import { protectedRouter } from "./routes/protected";
 import { userRouter } from "./routes/user/user-router";
+import { validateMiddleware } from './middlewares/Validate';
 
 // mongoose/mongoDB configuration
 import mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/TestingDB");
+///////////////////////////////////////////////////////////////
+// import { EncryptionService } from './services/EncryptionService'
+// let encryptService = new EncryptionService()
+// encryptService.testBufferEncryption(new Buffer("hello world", "utf8"))
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -34,6 +39,7 @@ class App {
     this.express.use(cors());
     this.express.use(compression());
     this.express.use(urlencoded({ extended: false }));
+    this.express.use(validateMiddleware())
   }
 
   private routes(): void {

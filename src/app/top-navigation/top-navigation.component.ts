@@ -23,11 +23,12 @@ export class TopNavigationComponent implements OnInit {
   ngOnInit() {
     this.profile$ = this.store.select("profile")
     this.profile$.subscribe(response => {
-      console.log('RESPONSE ', response)
+      // console.log('RESPONSE ', response)
       const { payload } = response
+      // payload.user ? this.username = payload.user.username : undefined
       if (payload.user) {
         this.username = payload.user.username
-        console.log(this.username)
+        console.log("username ", this.username)
       }
     })
    

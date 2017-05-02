@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    console.log("serv",sockSvc)
-    sockSvc.send('ellooo')
+    console.log("service socket ",sockSvc)
+    // sockSvc.send('ellooo')
 
     // this.socket = io('http://localhost:8000');
     // console.log(this.socket)

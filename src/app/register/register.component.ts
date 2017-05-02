@@ -21,7 +21,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(private sockSvc: SocketService,public fb: FormBuilder, public store: Store<IAppState>, public registerService: HttpService) {
 
-    console.log(sockSvc)
     this.profile$ = store.select('profile');
 
     this.form = fb.group({

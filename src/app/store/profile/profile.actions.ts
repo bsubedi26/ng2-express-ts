@@ -1,7 +1,8 @@
 export const USER_GET = 'Profile: get user';
 export const USER_GET_SUCCESS = 'Profile: get user success';
-export const USER_GET_FAIL = 'Profile: get user fail';
 export const USER_TRY_LOGIN = 'Profile: user try login';
 export const USER_TRY_LOGIN_SUCCESS = 'Profile: user try login success';
+export const USER_TRY_LOGIN_FAIL = 'Profile: user try login fail';
 export const USER_TRY_REGISTER = 'Profile: user try register';
 export const USER_TRY_REGISTER_SUCCESS = 'Profile: user try register success';
+export const USER_TRY_REGISTER_FAIL = 'Profile: user try register fail';

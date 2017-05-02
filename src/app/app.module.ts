@@ -26,8 +26,7 @@ import { TopNavigationComponent } from './top-navigation/top-navigation.componen
     instrumentation,
   ],
   providers: [
-    WeatherService,
-    // SocketService
+    WeatherService
   ],
   bootstrap: [
     AppComponent

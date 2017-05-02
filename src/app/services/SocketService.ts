@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import * as socketIo from 'socket.io-client';
 
-let SERVER_URL = 'http://localhost:8000';
+let SERVER_URL = 'http://localhost:3000';
 
 @Injectable()
 export class SocketService {
@@ -16,7 +16,7 @@ export class SocketService {
 
         this.store.select("profile")
             .subscribe((response: any) => {
-                console.log('RESPONSE SOCKEKTKE', response) 
+                // console.log('RESPONSE SOCKET', response) 
                 const { payload } = response
                 // let socket = socketIo(SERVER_URL, { query: "jwttoken=" + payload.jwt });
                 // socket.on("UPDATE_AUTH", action => console.log(action));
@@ -25,7 +25,7 @@ export class SocketService {
     }
 
     private initSocket(): void {
-        this.socket = socketIo(SERVER_URL);
+        // this.socket = socketIo(SERVER_URL);
     }
 
     public socketTest() {

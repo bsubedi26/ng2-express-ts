@@ -1,5 +1,5 @@
 import { Action, ActionReducer } from '@ngrx/store';
-import { USER_GET_SUCCESS, USER_TRY_LOGIN_SUCCESS, USER_TRY_LOGIN, USER_GET_FAIL, USER_TRY_REGISTER, USER_TRY_REGISTER_SUCCESS } from './profile.actions';
+import { USER_TRY_REGISTER_FAIL, USER_TRY_LOGIN_FAIL, USER_GET_SUCCESS, USER_TRY_LOGIN_SUCCESS, USER_TRY_LOGIN, USER_TRY_REGISTER, USER_TRY_REGISTER_SUCCESS } from './profile.actions';
 
 export interface IProfile {
   isFetching: boolean;
@@ -27,6 +27,14 @@ export const profileReducer: ActionReducer<IProfile> = (state: IProfile = initSt
         isFetching: false,
         payload: action.payload
       }
+    
+    case USER_TRY_LOGIN_FAIL:
+      console.log('LOGIN FAILED!')
+      return {
+        ...state,
+        isFetching: false,
+        payload: action.payload
+      }
 
     case USER_TRY_REGISTER:
       return {
@@ -41,8 +49,7 @@ export const profileReducer: ActionReducer<IProfile> = (state: IProfile = initSt
         payload: action.payload
       }
 
-    case USER_GET_FAIL:
-      console.log('GET FAILED!')
+    case USER_TRY_REGISTER_FAIL:
       return {
         ...state,
         isFetching: false,
