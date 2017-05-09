@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardComponent } from './dashboard.component';
 import { routing } from './dashboard.router';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({

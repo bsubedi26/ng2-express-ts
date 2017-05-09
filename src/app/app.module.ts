@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { routing } from './app.router';
 import { effects, store, instrumentation } from './store';
 import { SharedModule } from './shared/shared.module';
-import { WeatherService } from './weather/weather.service';
-import { TopNavigationComponent } from './top-navigation/top-navigation.component';
+import { WeatherService } from './pages/weather/weather.service';
+import { TopNavigationComponent } from './shared/top-navigation/top-navigation.component';
 
 @NgModule({
   declarations: [

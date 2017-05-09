@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { IAppState } from '../store/index';
-import { WEATHER_GET, SELECT_CITY } from '../store/weather/weather.actions';
-import { IWeather } from '../store/weather/weather.reducer';
+import { IAppState } from '../../store/index';
+import { WEATHER_GET, SELECT_CITY } from '../../store/weather/weather.actions';
+import { IWeather } from '../../store/weather/weather.reducer';
 
 @Component({
   selector: 'app-weather',

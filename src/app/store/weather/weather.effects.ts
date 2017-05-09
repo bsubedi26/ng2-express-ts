@@ -13,7 +13,7 @@ import {
   WEATHER_GET, AIR_QUALITY_GET, AIR_QUALITY_GET_SUCCESS, AIR_QUALITY_GET_FAIL,
   WEATHER_GET_FAIL, WEATHER_GET_SUCCESS, WEATHER_DATA_GET, WEATHER_DATA_GET_FAIL, WEATHER_DATA_GET_SUCCESS
 } from './weather.actions';
-import { WeatherService } from '../../weather/weather.service';
+import { WeatherService } from '../../pages/weather/weather.service';
 
 @Injectable()
 export class WeatherEffects {

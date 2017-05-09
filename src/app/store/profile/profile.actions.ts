@@ -6,3 +6,5 @@ export const USER_TRY_LOGIN_FAIL = 'Profile: user try login fail';
 export const USER_TRY_REGISTER = 'Profile: user try register';
 export const USER_TRY_REGISTER_SUCCESS = 'Profile: user try register success';
 export const USER_TRY_REGISTER_FAIL = 'Profile: user try register fail';
+
+export const USER_TRY_RESET_PASSWORD = 'Profile: user try reset password';

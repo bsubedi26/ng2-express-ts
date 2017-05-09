@@ -1,14 +1,14 @@
-import { SocketService } from './../services/SocketService';
-import { store } from './../store/index';
-import { HttpService } from './../services/HttpService';
+import { SocketService } from '../../services/SocketService';
+import { store } from '../../store/index';
+import { HttpService } from '../../services/HttpService';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { FEED_ADD, FEED_REMOVE, FEED_ADD_COMMENT } from '../store/feed/feed.actions';
-import { USER_TRY_LOGIN } from '../store/profile/profile.actions';
-import { IAppState } from '../store';
+import { FEED_ADD, FEED_REMOVE, FEED_ADD_COMMENT } from '../../store/feed/feed.actions';
+import { USER_TRY_LOGIN } from '../../store/profile/profile.actions';
+import { IAppState } from '../../store';
 import { Http } from "@angular/http";
 // import * as io from 'socket.io-client';
 
@@ -47,6 +47,18 @@ export class LoginComponent implements OnInit {
     //   console.log('LOGIN RESPONSE ', response)
     // })
    
+  }
+
+  resetPassword() {
+    this.loginService.dispatchResetPassword(this.form.value)
+  }
+  
+  updatePassword() {
+    
+  }
+  
+  forgotPassword() {
+    
   }
 
   submitLogin(): void {

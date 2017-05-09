@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { FEED_ADD, FEED_REMOVE, FEED_ADD_COMMENT } from '../store/feed/feed.actions';
-import { USER_TRY_LOGIN, USER_TRY_REGISTER } from '../store/profile/profile.actions';
+import { USER_TRY_LOGIN, USER_TRY_REGISTER, USER_TRY_RESET_PASSWORD } from '../store/profile/profile.actions';
 import { IAppState } from '../store';
 import { Http } from "@angular/http";
 
@@ -28,6 +28,13 @@ export class HttpService {
   dispatchProfileRegister(form) {
     this.store.dispatch({
         type: USER_TRY_REGISTER,
+        payload: form
+    });
+  }
+
+  dispatchResetPassword(form) {
+    this.store.dispatch({
+        type: USER_TRY_RESET_PASSWORD,
         payload: form
     });
   }
